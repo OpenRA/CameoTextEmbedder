@@ -19,7 +19,7 @@ GIMP plugin to embed text to side bar icons in C&amp;C mods
 
 # How to use
 
-* https://youtu.be/IHOe-uCPbh8
+* Demo: https://youtu.be/IHOe-uCPbh8
 * You'll see the following new menu:
 * Filters --> Python-Fu --> RA1 Cameo Text
 * Click on it, type your cameo text and that's it.

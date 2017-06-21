@@ -14,7 +14,7 @@ GIMP plugin to embed text to side bar icons in C&amp;C mods
 * We will call this $GIMP\_HOME
 * Place put\_ra1.py in $GIMP_HOME/plug-ins directory, which should be already there.
 * Copy (or soft link) ra1\_cameo\_font data into $GIMP\_HOME so that
-  the plugin can find $GIMP\_HOME\_ra1\_cameo\_font\_a.png, b.png, ...
+  the plugin can find $GIMP\_HOME/ra1\_cameo\_font/a.png, b.png, ...
 * Restart GIMP, if you haven't closed it already.
 
 # How to use

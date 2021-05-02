@@ -1,10 +1,17 @@
-# How to use this thing.
-# Place this as
-# C:\Program Files\GIMP 2\lib\gimp\2.0\plug-ins\put_ra1.py
+#!/usr/bin/env python2
+
+# Place this script as
+# C:\Program Files\GIMP 2\lib\gimp\2.0\plug-ins\ra1-cameo.py
 # or something so that GIMP will detect this as a plugin.
+# On Linux, it is might be ~/.config/GIMP/2.10/plug-ins/ra1-cameo.py,
+# make sure it is EXECUTABLE by running chmod +x ra1-cameo.py command.
 # Then this will be visible in Filters --> Python-fu --> RA1 Cameo Text
 #
-# Modify the FONT variable accordingly.
+# Please modify the FONT variable accordingly.
+# You CAN use this script for RA2 if you provide the right data.
+#
+# Please take a look at the official plugin if you want more examples.
+# https://github.com/GNOME/gimp/blob/master/plug-ins/python/
 
 from gimpfu import *
 import os
@@ -31,13 +38,11 @@ HEIGHT = 48
 COORD_Y = 42
 
 
-
 def compute_width(letters):
     w = 0
     for letter in letters:
         w += LETTER_WIDTH[letter]
     return w
-
 
 
 def put_letters(image, drawable, letters, x):
@@ -59,7 +64,6 @@ def put_letters(image, drawable, letters, x):
         x += LETTER_WIDTH[letter]
 
 
-
 def put_bg(image):
     layer = pdb.gimp_layer_new(image, WIDTH, 7, 1, "bg", 100, 0)
     pdb.gimp_image_insert_layer(image, layer, None, -1)
@@ -70,8 +74,7 @@ def put_bg(image):
     pdb.gimp_layer_translate(layer, 0, COORD_Y - 1)
 
 
-
-def ra1(img, drawable, words):
+def add_ra1_text(img, drawable, words):
     # split char by char.
     letters = words.lower()
     width = compute_width(letters)
@@ -88,22 +91,24 @@ def ra1(img, drawable, words):
     pdb.gimp_image_undo_group_end(img)
 
 
-
 register(
-    "python_fu_ra1_cameo_text",
-    "Puts ra1 cameo text",
-    "Puts ra1 cameo text",
-    "boolbada",
-    "boolbada",
-    "2017",
-    "<Image>/Filters/Python-Fu/RA1 Cameo Text",
-    #"RGB*, GRAY*, INDEXED*",
+    "python-fu-ra1-cameo-text",
+    "Add text to the cameo image",
+    "Add text to the cameo image",
+    "BoolBada",
+    "BoolBada",
+    "2017,2021",
+    "RA1 Cameo Text...",
     "RGB*, GRAY*",
     [
-        (PF_STRING, "words", "Text", "Unit Name")
+        (PF_IMAGE,    "img",       "Input image", None),
+        (PF_DRAWABLE, "drawable",  "Input drawable", None),
+        (PF_STRING,   "words", "Text", "Unit Name")
     ],
     [],
-    ra1)
+    add_ra1_text,
+    menu="<Image>/Filters/CnC Modding/RA1 Cameo Text",
+    domain=("gimp20-python", gimp.locale_directory)
+    )
 
 main()
-

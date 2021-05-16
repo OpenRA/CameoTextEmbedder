@@ -10,11 +10,11 @@ GIMP plugin to embed text to side bar icons in C&amp;C mods
 * Type the following command without quotes: "print(gimp.directory)"
 * You'll see something like this:
   * C:\\Users\user\\.gimp-2.8
-  * /home/user/.gimp-2.8
+  * /home/user/.config/GIMP-2.10
 * We will call this $GIMP\_HOME
-* Place put\_ra1.py in $GIMP_HOME/plug-ins directory, which should be already there.
-* Copy (or soft link) ra1\_cameo\_font data into $GIMP\_HOME so that
-  the plugin can find $GIMP\_HOME/ra1\_cameo\_font/a.png, b.png, ...
+* Place cameo.py in $GIMP_HOME/plug-ins folder, which should be already there.
+* Copy (or soft link) cameo\_font data into $GIMP\_HOME so that
+  the plugin can find $GIMP\_HOME/cameo\_font/ra1/a.png, b.png, ...
 * Restart GIMP, if you haven't closed it already.
 
 # How to use
@@ -25,7 +25,7 @@ GIMP plugin to embed text to side bar icons in C&amp;C mods
 * Click on it, type your cameo text and that's it.
 * It creates two new layers, one is half-transparent background for the text
   and the other is the cameo text. You can move or delete them to fit your need.
-* This script can be adapted to do RA2 cameo too.
+* This script can be adapted to do other games, too.
   You need to copy the script, make alphabets in PNG format
-  like the ones in ra1\_cameo\_font (with alpha channel as transparency),
+  like the ones cameo\_font/ra1,ra2 (with alpha channel as transparency),
   then modify LETTER\_WIDTH variable in the script.
